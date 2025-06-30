@@ -24,27 +24,29 @@ const Resume = () => {
         <Title title="+5 années d'expériences" des='Mon CV' />
       </div>
 
-      <div className='max-w-7xl mx-auto px-4 flex flex-col lg:flex-row gap-6'>
+      <div className='max-w-7xl mx-auto px-1 flex flex-row gap-0'>
         {/* Menu sticky vertical avec icônes */}
-        <ul className='w-full lg:w-1/4 flex flex-row lg:flex-col gap-2 sticky top-24 h-fit'>
+        <ul className='w-[60px] sticky top-24 h-fit flex flex-col gap-2'>
           {menuItems.map((item) => (
             <li
               key={item.key}
               onClick={() => setActiveTab(item.key)}
-              className={`resumeLi flex items-center gap-2 shadow-sm cursor-pointer ${
-                activeTab === item.key
+              className={`resumeLi flex flex-col items-center justify-center p-2
+                ${activeTab === item.key
                   ? 'bg-[#2563EB] text-white border-[#2563EB]'
-                  : 'bg-[#1f2937] text-gray-300'
-              }`}
+                  : 'bg-[#1f2937] text-gray-300'}
+              `}
             >
               <span className="text-xl">{item.icon}</span>
-              <span className="text-sm sm:text-base">{item.label}</span>
+              <span className="hidden md:inline text-sm text-center">
+                {item.label}
+              </span>
             </li>
           ))}
         </ul>
 
-        {/* Contenu dynamique */}
-        <div className='w-full lg:w-3/4'>
+        {/* Contenu dynamique à droite */}
+        <div className='flex-1'>
           {activeTab === 'education' && <Education />}
           {activeTab === 'experience' && <Experience />}
           {activeTab === 'achievement' && <Achievement />}
